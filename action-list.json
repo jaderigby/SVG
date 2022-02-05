@@ -1,0 +1,14 @@
+{
+    "alias": "svg", 
+    "toolName": "SVG", 
+    "actions": [
+        {
+            "name": "clean", 
+            "description": "removes cruft. Available Options:\n\nfile:\t\tSpecify a specific file by path\nbatch:\t\tProcess all files in the current directory\nfrom:\t\tPath/directory to work from\nto:\t\tPath/directory to save files to\n"
+        },
+        {
+            "name": "format", 
+            "description": "optimizes svgs using Inkscape"
+        }
+    ]
+}
