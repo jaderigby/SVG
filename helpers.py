@@ -157,9 +157,12 @@ def handle_svgo():
 
 	return status
 
-def clean(FROM, TO, FILE):
+def clean(FROM, TO, FILE, TYPE):
 	svgFileCore = FILE.replace('.svg', '')
-	run_command("svgo '{FROM}/{FILE}' -o '{TO}/{FILE_CORE}.clean.svg' --pretty".format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
+	if TYPE == 'pretty':
+		run_command("svgo '{FROM}/{FILE}' -o '{TO}/{FILE_CORE}.clean.svg' --pretty".format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
+	else:
+		run_command("svgo '{FROM}/{FILE}' -o '{TO}/{FILE_CORE}.minified.svg'".format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
 
 def normalize_tilde(FILEPATH):
 	import re

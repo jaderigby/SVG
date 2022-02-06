@@ -30,7 +30,7 @@ elif action == '-alias':
 	sizzle.alias()
 
 elif action == "clean":
-	Clean.execute(args)
+	Clean.execute(args, 'pretty')
 
 elif action == "minify":
 	Minify.execute(args)

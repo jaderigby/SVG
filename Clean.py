@@ -3,7 +3,7 @@ import helpers, glob, re
 
 settings = helpers.get_settings()
 
-def execute(ARGS):
+def execute(ARGS, TYPE):
 	argDict = helpers.arguments(ARGS)
 	filePath = helpers.kv_set(argDict, 'file')
 	batch = helpers.kv_set(argDict, 'batch')
@@ -24,6 +24,11 @@ def execute(ARGS):
 		else:
 			fromPath = helpers.normalize_tilde(origin) if origin else helpers.path('current')
 			toPath = helpers.normalize_tilde(destination) if destination else helpers.path('current')
+
+			if fromPath == '-profile-':
+				fromPath = helpers.normalize_tilde(settings['fromPath'])
+			if toPath == '-profile-':
+				toPath = helpers.normalize_tilde(settings['toPath'])
 
 		#= If filePath is specified:
 		if filePath:
@@ -53,6 +58,6 @@ def execute(ARGS):
 				else:
 					for index in selectedFileList:
 						svgFile = nameOnlyFileList[index - 1]
-						helpers.clean(fromPath, toPath, svgFile)	
+						helpers.clean(fromPath, toPath, svgFile, TYPE)	
 
 	msg.done()
