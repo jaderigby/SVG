@@ -2,6 +2,7 @@ import sys, sizzle
 import messages as msg
 import Clean
 import Format
+import Minify
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -30,6 +31,9 @@ elif action == '-alias':
 
 elif action == "clean":
 	Clean.execute(args)
+
+elif action == "minify":
+	Minify.execute(args)
 
 elif action == "format":
 	Format.execute(args)

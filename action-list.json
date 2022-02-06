@@ -4,11 +4,15 @@
     "actions": [
         {
             "name": "clean", 
-            "description": "removes cruft. Available Options:\n\nfile:\t\tSpecify a specific file by path\nbatch:\t\tProcess all files in the current directory\nfrom:\t\tPath/directory to work from\nto:\t\tPath/directory to save files to\n"
-        },
+            "description": "removes cruft. Available Options:\n\nfile:\t\tSpecify a specific file by path\nbatch:\t\t't/true', Processes all files in the current directory, or the 'from' path\nfrom:\t\tPath/directory to work from\nto:\t\tPath/directory to save files to\nprofile:\t't/true', Uses the 'fromPath' and 'toPath' values from your profile file\n"
+        }, 
         {
             "name": "format", 
             "description": "optimizes svgs using Inkscape"
+        }, 
+        {
+            "name": "minifiy", 
+            "description": "Similar to 'clean', but removes whitespace characters, as well"
         }
     ]
 }

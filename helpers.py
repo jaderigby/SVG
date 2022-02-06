@@ -1,5 +1,6 @@
 import json
 from settings import settings
+import messages as msg
 
 profilePath = settings['profile_url'] + settings['profile']
 
@@ -18,7 +19,7 @@ def path(TYPE):
 	elif TYPE == 'util' or TYPE == 'utility':
 		return os.path.dirname(os.path.realpath(__file__))
 	elif TYPE == 'curr' or TYPE == 'current':
-		return run_command_output('pwd', False)
+		return run_command_output('pwd', False).replace('\n', '')
 	else:
 		return False
 
@@ -136,3 +137,40 @@ def kv_set(DICT, KEY, DEFAULT = False):
 
 # custom helpers start here
 # =========================
+
+def handle_svgo():
+	status = False
+	checkforSVGO = 'npm list -g | grep svgo'
+	hasSVGO = run_command_output(checkforSVGO, False)
+	installSVGO = 'npm install -g svgo'
+	installSVGOWithSudo = 'sudo npm install -g svgo'
+	
+	if hasSVGO is None:
+		msg.installing_svgo()
+		useSudo = helpers.user_selection('Use Sudo? ', ['Yes', 'No'], )
+		if useSudo is 1:
+			helpers.run_command(installSVGOWithSudo)
+		elif useSudo is 2:
+			helpers.run_command(installSVGO)
+	else:
+		status = True
+
+	return status
+
+def clean(FROM, TO, FILE):
+	svgFileCore = FILE.replace('.svg', '')
+	run_command("svgo '{FROM}/{FILE}' -o '{TO}/{FILE_CORE}.clean.svg' --pretty".format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
+
+def normalize_tilde(FILEPATH):
+	import re
+	firstChar = FILEPATH[:1]
+	if firstChar == '~':
+		return '{}{}'.format(path('user')[:-1], FILEPATH[1:])
+	else:
+		return FILEPATH
+
+def strip_path(LIST, PATH):
+	newList = []
+	for item in LIST:
+		newList.append(item.replace(PATH + '/', ''))
+	return newList
