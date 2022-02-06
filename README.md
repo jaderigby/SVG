@@ -45,6 +45,6 @@ Format optimizes svgs using Inkscape.
 
 ### Minify ###
 
-`svg format`
+`svg minify`
 
 Minify shares the same functionality as 'clean', but removes whitespace characters, as well.
