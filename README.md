@@ -1,6 +1,6 @@
 # SVG #
 
-#### Clean ####
+### Clean ###
 
 `svg clean`
 
@@ -18,13 +18,13 @@ Use the value '-profile-' to utilize your profile's 'fromPath'
 
 - __profile:__        't/true', Uses the 'fromPath' and 'toPath' values from your profile file
 
-#### Format ####
+### Format ###
 
 `svg format`
 
 Format optimizes svgs using Inkscape.
 
-#### Minify ####
+### Minify ###
 
 `svg format`
 
