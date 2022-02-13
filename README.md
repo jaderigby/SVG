@@ -23,11 +23,11 @@ If you want to set a folder to use every time, first create a profile file by ru
 Save it, and when you want to use this path, simply use the value `-profile-` for the `to` attribute, like so:  `svg clean to:-profile-`.
 
 
-Available Options:
+Available Options (for clean, format, and minify):
 
 - __file:__           Specify a specific file by path
 
-- __batch:__          't/true', Processes all files in the current directory, or the 'from' path
+- __batch:__          't|true', Processes all files in the current directory, or the 'from' path
 
 - __from:__           Path/directory to work from.
 Use the value '-profile-' to utilize your profile's 'fromPath'
@@ -35,13 +35,18 @@ Use the value '-profile-' to utilize your profile's 'fromPath'
 - __to:__             Path/directory to save files to.
                 Use the value '-profile-' to utilize your profile's 'toPath'
 
-- __profile:__        't/true', Uses the 'fromPath' and 'toPath' values from your profile file
+- __profile:__        't|true', Uses the 'fromPath' and 'toPath' values from your profile file
 
 ### Format ###
 
 `svg format`
 
-Format optimizes svgs using Inkscape.
+Format optimizes svgs using Inkscape.  If you'd like to formath strokes to paths, as well, add the argument 'strokes:t' or 'strokes:true'. For example:
+
+```
+svg format strokes:t
+
+```
 
 ### Minify ###
 
