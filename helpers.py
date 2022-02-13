@@ -158,7 +158,10 @@ def handle_svgo():
 	return status
 
 def clean(FROM, TO, FILE, TYPE):
-	svgFileCore = FILE.replace('.svg', '')
+	import re
+	#= remove previous extensions, where possible:
+	svgFileCore = re.sub('(.ink.svg|.clean.svg|.svg)', '', FILE)
+
 	if TYPE == 'pretty':
 		run_command("svgo '{FROM}/{FILE}' -o '{TO}/{FILE_CORE}.clean.svg' --pretty".format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
 	else:
@@ -177,3 +180,30 @@ def strip_path(LIST, PATH):
 	for item in LIST:
 		newList.append(item.replace(PATH + '/', ''))
 	return newList
+
+def format(FROM, TO, FILE, STROKES_TO_PATH = True):
+	import re
+
+	#= remove previous extensions, where possible:
+	svgFileCore = re.sub('(.designer.svg|.ink.svg|.sketch.svg|.formatted.svg|.clean.svg|.minified.svg|.svg)', '', FILE)
+	
+	run_command('scp {FROM}/{FILE} {TO}/{FILE_CORE}.formatted.svg'.format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
+
+	ct = 20
+
+	while True:
+		CONTENT = read_file('{TO}/{FILE_CORE}.formatted.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore))
+		match = False
+		if ct > 0:
+			ct -= 1
+			match = re.findall('(<g |<g\n)', CONTENT)
+			if match:
+				run_command('inkscape --actions "select-all:groups; SelectionUnGroup; export-filename:{TO}/{FILE_CORE}.formatted.svg; export-plain-svg; export-do;" {TO}/{FILE_CORE}.formatted.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore))
+			else:
+				print("completed!")
+				break
+		else:
+			print("\n\n---- Maximum attempts achieved! ----\n")
+			break
+
+	run_command('inkscape --actions "select-all:no-groups;{FORMAT_STROKES} select-all:all; SelectionGroup; export-filename:{TO}/{FILE_CORE}.formatted.svg; export-plain-svg; export-do;" {TO}/{FILE_CORE}.formatted.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore, FORMAT_STROKES = ' object-stroke-to-path;' if STROKES_TO_PATH else ''))

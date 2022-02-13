@@ -4,11 +4,11 @@
     "actions": [
         {
             "name": "clean", 
-            "description": "removes cruft. Available Options:\n\nfile:\t\tSpecify a specific file by path\nbatch:\t\t't/true', Processes all files in the current directory, or the 'from' path\nfrom:\t\tPath/directory to work from.\n\t\tUse the value '-profile-' to utilize your profile's 'fromPath'\nto:\t\tPath/directory to save files to.\n\t\tUse the value '-profile-' to utilize your profile's 'toPath'\nprofile:\t't/true', Uses the 'fromPath' and 'toPath' values from your profile file\n"
+            "description": "removes cruft. Available Options:\n\nfile:\t\tSpecify a specific file by path\nbatch:\t\t't|true', Processes all files in the current directory, or the 'from' path\nfrom:\t\tPath/directory to work from.\n\t\tUse the value '-profile-' to utilize your profile's 'fromPath'\nto:\t\tPath/directory to save files to.\n\t\tUse the value '-profile-' to utilize your profile's 'toPath'\nprofile:\t't/true', Uses the 'fromPath' and 'toPath' values from your profile file\n"
         }, 
         {
             "name": "format", 
-            "description": "optimizes svgs using Inkscape"
+            "description": "Utilizing Inkscape, optimizes svgs by removing groups, then adding one group around all objects.  Available options:\n\nstrokes:\tt|true, tranforms all strokes into paths\n"
         }, 
         {
             "name": "minifiy", 
