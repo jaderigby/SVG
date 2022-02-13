@@ -19,8 +19,8 @@ def execute(ARGS, TYPE):
 		profile = True if (profile == 't' or profile == 'true') else False
 
 		if profile:
-			fromPath = helpers.normalize_tilde(settings['fromPath'])
-			toPath = helpers.normalize_tilde(settings['toPath'])
+			fromPath = settings['from'] if origin is "-profile" else helpers.normalize_tilde(settings['fromPath'])
+			toPath = settings['to'] if destination is "-profile" else helpers.normalize_tilde(settings['toPath'])
 		else:
 			fromPath = helpers.normalize_tilde(origin) if origin else helpers.path('current')
 			toPath = helpers.normalize_tilde(destination) if destination else helpers.path('current')
@@ -36,7 +36,7 @@ def execute(ARGS, TYPE):
 			rootDest = toPath or rootDir
 			svgFile = re.findall('[^\/]*\.svg', filePath)[0]
 
-			helpers.clean(rootDir, rootDest, svgFile)
+			helpers.clean(rootDir, rootDest, svgFile, TYPE)
 
 		#= if filePath is NOT specified, select from list or do as a batch
 		else:
@@ -47,7 +47,7 @@ def execute(ARGS, TYPE):
 
 			if batch:
 				for svgFile in nameOnlyFileList:
-					helpers.clean(fromPath, toPath, svgFile)
+					helpers.clean(fromPath, toPath, svgFile, TYPE)
 				
 			else:
 				msg.working_from(fromPath)
