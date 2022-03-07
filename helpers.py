@@ -160,7 +160,7 @@ def handle_svgo():
 def clean(FROM, TO, FILE, TYPE):
 	import re
 	#= remove previous extensions, where possible:
-	svgFileCore = re.sub('(.ink.svg|.clean.svg|.svg)', '', FILE)
+	svgFileCore = re.sub('(.ink.svg|.clean.svg|.svg|.serif-clean.svg)', '', FILE)
 
 	if TYPE == 'pretty':
 		run_command("svgo '{FROM}/{FILE}' -o '{TO}/{FILE_CORE}.clean.svg' --pretty".format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
@@ -185,7 +185,7 @@ def format(FROM, TO, FILE, STROKES_TO_PATH = True):
 	import re
 
 	#= remove previous extensions, where possible:
-	svgFileCore = re.sub('(.designer.svg|.ink.svg|.sketch.svg|.formatted.svg|.clean.svg|.minified.svg|.svg)', '', FILE)
+	svgFileCore = re.sub('(.designer.svg|.ink.svg|.sketch.svg|.formatted.svg|.clean.svg|.minified.svg|.svg|.serif-clean.svg)', '', FILE)
 	
 	run_command('scp {FROM}/{FILE} {TO}/{FILE_CORE}.formatted.svg'.format(FROM = FROM.replace('\n', ''), TO = TO.replace('\n', ''), FILE = FILE, FILE_CORE = svgFileCore))
 
@@ -212,7 +212,7 @@ def serif_cleanup(FROM, TO, FILE):
 	import re
 
 	#= remove previous extensions, where possible:
-	svgFileCore = re.sub('(.designer.svg|.ink.svg|.sketch.svg|.formatted.svg|.clean.svg|.minified.svg|.svg)', '', FILE)
+	svgFileCore = re.sub('(.designer.svg|.ink.svg|.sketch.svg|.formatted.svg|.clean.svg|.minified.svg|.svg|.serif-clean.svg)', '', FILE)
 
 	CONTENT = read_file('{FROM}/{FILE_CORE}.svg'.format(FROM = FROM.replace('\n', ''), FILE_CORE = svgFileCore))
 	CONTENT_REFINED = re.sub('serif:id="[a-z A-Z0-9]*"', '', CONTENT)
