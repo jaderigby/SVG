@@ -147,11 +147,11 @@ def handle_svgo():
 	
 	if hasSVGO is None:
 		msg.installing_svgo()
-		useSudo = helpers.user_selection('Use Sudo? ', ['Yes', 'No'], )
+		useSudo = user_selection('Use Sudo? ', ['Yes', 'No'], )
 		if useSudo is 1:
-			helpers.run_command(installSVGOWithSudo)
+			run_command(installSVGOWithSudo)
 		elif useSudo is 2:
-			helpers.run_command(installSVGO)
+			run_command(installSVGO)
 	else:
 		status = True
 
