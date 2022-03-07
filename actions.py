@@ -3,6 +3,7 @@ import messages as msg
 import Clean
 import Format
 import Minify
+import SerifCleanup
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -29,6 +30,9 @@ elif action == '-helpers':
 elif action == '-alias':
 	sizzle.alias()
 
+elif action == '-actionlist':
+	sizzle.actionlist()
+
 elif action == "clean":
 	Clean.execute(args, 'pretty')
 
@@ -37,4 +41,7 @@ elif action == "minify":
 
 elif action == "format":
 	Format.execute(args)
+
+elif action == "serif-cleanup":
+	SerifCleanup.execute(args)
 # new actions start here
