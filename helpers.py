@@ -207,3 +207,14 @@ def format(FROM, TO, FILE, STROKES_TO_PATH = True):
 			break
 
 	run_command('inkscape --actions "select-all:no-groups;{FORMAT_STROKES} select-all:all; SelectionGroup; export-filename:{TO}/{FILE_CORE}.formatted.svg; export-plain-svg; export-do;" {TO}/{FILE_CORE}.formatted.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore, FORMAT_STROKES = ' object-stroke-to-path;' if STROKES_TO_PATH else ''))
+
+def serif_cleanup(FROM, TO, FILE):
+	import re
+
+	#= remove previous extensions, where possible:
+	svgFileCore = re.sub('(.designer.svg|.ink.svg|.sketch.svg|.formatted.svg|.clean.svg|.minified.svg|.svg)', '', FILE)
+
+	CONTENT = read_file('{FROM}/{FILE_CORE}.svg'.format(FROM = FROM.replace('\n', ''), FILE_CORE = svgFileCore))
+	CONTENT_REFINED = re.sub('serif:id="[a-z A-Z0-9]*"', '', CONTENT)
+	print('writing file: {TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore))
+	write_file('{TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore), CONTENT_REFINED)
