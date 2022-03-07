@@ -16,7 +16,7 @@
         }, 
         {
             "name": "serif-cleanup", 
-            "description": ""
+            "description": "Removes serif:ids from content"
         }
     ]
 }
