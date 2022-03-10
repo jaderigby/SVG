@@ -11,6 +11,9 @@ def execute(ARGS):
 	destination = helpers.kv_set(argDict, 'to')
 	profile = helpers.kv_set(argDict, 'profile')
 
+	def cmd_function(PARAM1, PARAM2, PARAM3):
+		helpers.serif_cleanup(PARAM1, PARAM2, PARAM3)
+
 	hasSVGO = helpers.handle_svgo()
 
 	#= if SVGO is installed, proceed!
@@ -36,7 +39,7 @@ def execute(ARGS):
 			rootDest = toPath or rootDir
 			svgFile = re.findall('[^\/]*\.svg', filePath)[0]
 
-			helpers.serif_cleanup(rootDir, rootDest, svgFile)
+			cmd_function(rootDir, rootDest, svgFile)
 
 		#= if filePath is NOT specified, select from list or do as a batch
 		else:
@@ -47,7 +50,7 @@ def execute(ARGS):
 
 			if batch:
 				for svgFile in nameOnlyFileList:
-					helpers.serif_cleanup(fromPath, toPath, svgFile)
+					cmd_function(fromPath, toPath, svgFile)
 				
 			else:
 				msg.working_from(fromPath)
@@ -58,6 +61,6 @@ def execute(ARGS):
 				else:
 					for index in selectedFileList:
 						svgFile = nameOnlyFileList[index - 1]
-						helpers.serif_cleanup(fromPath, toPath, svgFile)	
+						cmd_function(fromPath, toPath, svgFile)	
 
 	msg.done()
