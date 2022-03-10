@@ -148,9 +148,9 @@ def handle_svgo():
 	if hasSVGO is None:
 		msg.installing_svgo()
 		useSudo = user_selection('Use Sudo? ', ['Yes', 'No'], )
-		if useSudo is 1:
+		if useSudo == 1:
 			run_command(installSVGOWithSudo)
-		elif useSudo is 2:
+		elif useSudo == 2:
 			run_command(installSVGO)
 	else:
 		status = True
@@ -216,5 +216,5 @@ def serif_cleanup(FROM, TO, FILE):
 
 	CONTENT = read_file('{FROM}/{FILE_CORE}.svg'.format(FROM = FROM.replace('\n', ''), FILE_CORE = svgFileCore))
 	CONTENT_REFINED = re.sub('serif:id="[a-z A-Z0-9]*"', '', CONTENT)
-	print('writing file: {TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore))
+	print('\nwriting file: {TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore))
 	write_file('{TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore), CONTENT_REFINED)

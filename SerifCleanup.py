@@ -53,7 +53,7 @@ def execute(ARGS):
 				msg.working_from(fromPath)
 				selectedFileList = helpers.user_selection('Selection: ', nameOnlyFileList, True)
 
-				if selectedFileList is 'exit':
+				if selectedFileList == 'exit':
 					msg.exiting()
 				else:
 					for index in selectedFileList:
