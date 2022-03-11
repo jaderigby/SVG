@@ -219,7 +219,18 @@ def serif_cleanup(FROM, TO, FILE):
 	#= remove previous extensions, where possible:
 	svgFileCore = re.sub(sharedSuffixPat, '', FILE)
 
-	CONTENT = read_file('{FROM}/{FILE_CORE}.svg'.format(FROM = FROM.replace('\n', ''), FILE_CORE = svgFileCore))
-	CONTENT_REFINED = re.sub('serif:id="[a-z A-Z0-9]*"', '', CONTENT)
-	print('\nwriting file: {TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore))
-	write_file('{TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore), CONTENT_REFINED)
+	CONTENT = read_file('{FROM}/{FILE}'.format(FROM = FROM.replace('\n', ''), FILE = FILE))
+	pat = 'serif:id="[a-z A-Z0-9]*"'
+	CONTENT_REFINED = re.sub(pat, '', CONTENT)
+	MATCHES = re.findall(pat, CONTENT)
+	s = ''
+	if len(MATCHES) != 0:
+		for item in MATCHES:
+			s += '\n{}'.format(item)
+		print('''
+Removed {} items:
+{}'''.format(len(MATCHES), decorate('yellow', s)))
+		print(decorate('green', '\nwriting file: {TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore)))
+		write_file('{TO}/{FILE_CORE}.serif-clean.svg'.format(TO = TO.replace('\n', ''), FILE_CORE = svgFileCore), CONTENT_REFINED)
+	else:
+		print(decorate('yellow', "\nNothing to remove"))

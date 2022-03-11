@@ -18,6 +18,11 @@ def execute(ARGS):
 
 	#= if SVGO is installed, proceed!
 	if hasSVGO:
+		if destination:
+			import os
+			#= If only one level deep and folder does not exist, then create it
+			if not os.path.exists(destination) and '/' not in destination:
+				helpers.run_command('mkdir {}'.format(destination))
 		batch = True if (batch == 't' or batch == 'true') else False
 		profile = True if (profile == 't' or profile == 'true') else False
 
