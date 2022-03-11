@@ -42,6 +42,6 @@ elif action == "minify":
 elif action == "format":
 	Format.execute(args)
 
-elif action == "serif-cleanup":
+elif action == "serif-clean":
 	SerifCleanup.execute(args)
 # new actions start here

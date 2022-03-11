@@ -15,7 +15,7 @@
             "description": "Shares the same functionality as 'clean',\n\t\t\tbut removes whitespace characters, as well"
         }, 
         {
-            "name": "serif-cleanup", 
+            "name": "serif-clean", 
             "description": "Removes serif:ids from content"
         }
     ]
