@@ -6,7 +6,18 @@
 
 The SVG Utility is a Bacon utility.  If you haven't already, follow the instructions for installing [Bacon](https://github.com/jaderigby/bacon#setup).  Once Bacon is installed: Either 1) clone or 2) download, unzip and move the SVG Utility to the bacon-bits folder contained within your Documents folder.
 
-Then, run `bacon alias` and `bacon set`.  That's it!  To check that everything is running properly, type `svg` then hit enter and you should see the usage instructions for the SVG Utility.
+Then, run `bacon alias` and `bacon set`.  To check that everything is running properly, type `svg` then hit enter and you should see the usage instructions for the SVG Utility.
+
+Finally, make sure the below dependencies are installed.
+
+## Dependencies ##
+
+The SVG Utility requires the following dependencies:
+
+- latest version of [Inkscape](https://inkscape.org/release/inkscape-1.1.2/) (Mac)
+- [SVGO](https://github.com/svg/svgo#installation)
+
+Please install these before running the SVG Utility.
 
 ## Commands ##
 
@@ -51,7 +62,7 @@ Use the value '-profile-' to utilize your profile's 'fromPath'
 
 `svg format`
 
-Format optimizes svgs using Inkscape.  If you'd like to formath strokes to paths, as well, add the argument 'strokes:t' or 'strokes:true'. For example:
+Format optimizes svgs using Inkscape.  If you'd like to format strokes to paths, as well, add the argument 'strokes:t' or 'strokes:true'. For example:
 
 ```
 svg format strokes:t
