@@ -6,7 +6,7 @@
 
 The SVG Utility is a Bacon utility.  If you haven't already, follow the instructions for installing [Bacon](https://github.com/jaderigby/bacon#setup).  Once Bacon is installed: Either 1) clone or 2) download, unzip and move the SVG Utility to the bacon-bits folder contained within your Documents folder.
 
-Then, run `bacon alias` and `bacon set`.  That's it!  To check that everything is running, type `svg` then hit enter and you should see the usage instructions for the SVG Utility.
+Then, run `bacon alias` and `bacon set`.  That's it!  To check that everything is running properly, type `svg` then hit enter and you should see the usage instructions for the SVG Utility.
 
 ### Clean ###
 
