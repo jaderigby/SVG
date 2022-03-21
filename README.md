@@ -1,6 +1,6 @@
 # SVG #
 
-~~~ Made With Bacon!
+\~\~\~ Made with [Bacon](https://github.com/jaderigby/bacon)!
 
 ### Clean ###
 
