@@ -17,7 +17,7 @@ The SVG Utility requires the following dependencies:
 - latest version of [Inkscape](https://inkscape.org/release/inkscape-1.1.2/) (Mac)
 - [SVGO](https://github.com/svg/svgo#installation)
 
-Please install these before running the SVG Utility.
+Please install these before using the SVG Utility.
 
 ## Commands ##
 
