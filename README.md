@@ -74,3 +74,9 @@ svg format strokes:t
 `svg minify`
 
 Minify shares the same functionality as 'clean', but removes whitespace characters, as well.
+
+### Serif-Clean ###
+
+`svg serif-clean`
+
+Removes serif:ids from content
