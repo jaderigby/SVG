@@ -8,6 +8,8 @@ The SVG Utility is a Bacon utility.  If you haven't already, follow the instruct
 
 Then, run `bacon alias` and `bacon set`.  That's it!  To check that everything is running properly, type `svg` then hit enter and you should see the usage instructions for the SVG Utility.
 
+## Commands ##
+
 ### Clean ###
 
 `svg clean`
