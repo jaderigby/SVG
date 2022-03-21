@@ -1,5 +1,7 @@
 # SVG #
 
+~~~ Made With Bacon!
+
 ### Clean ###
 
 `svg clean`
